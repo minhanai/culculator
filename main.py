@@ -4,6 +4,12 @@ from fastapi import FastAPI, Request
 # FastAPIのインスタンス作成
 app = FastAPI()
 
+# 変数
+KIGOU_TASU = 1
+KIGOU_HIKU = 2
+KIGOU_KAKERU = 3
+KIGOU_WARU = 4
+
 # GETメソッドでルートURLにアクセスされたときの処理
 @app.get("/{no1}/{no2}/{kigou}") 
 async def root(request: Request):
@@ -12,16 +18,16 @@ async def root(request: Request):
     no2 = int(req.get("no2"))
     kigou = int(req.get("kigou"))
 
-    if kigou == 1:
+    if kigou == KIGOU_TASU:
         print(no1 + no2)
         return (no1 + no2)
-    elif kigou == 2:
+    elif kigou == KIGOU_HIKU:
         print(no1 - no2)
         return (no1 - no2)
-    elif kigou == 3:
+    elif kigou == KIGOU_KAKERU:
         print(no1 * no2)
         return (no1 * no2)
-    elif kigou == 4:
+    elif kigou == KIGOU_WARU:
         print(no1 / no2)
         return (no1 / no2)
     else:
