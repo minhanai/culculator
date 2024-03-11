@@ -1,8 +1,18 @@
 # FastAPIをインポート
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # FastAPIのインスタンス作成
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,   # 追記により追加
+    allow_methods=["*"],      # 追記により追加
+    allow_headers=["*"]       # 追記により追加
+)
 
 # 変数
 KIGOU_TASU = 1
